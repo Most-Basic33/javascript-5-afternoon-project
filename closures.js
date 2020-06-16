@@ -181,8 +181,15 @@ function secretNumber() {
   var secret = 143;
 
   return {
-  addToSecret:(num)=>{
+    addToSecret: (num) => {
+      secret += num;
+      return secret;
 
+    },
+    takeAwayFromSecret: (num) => {
+      secret -= num;
+      return secret
+    }
   }
 }
 
@@ -199,7 +206,7 @@ function secretNumber() {
     3 seconds after call - log 3
     4 seconds after call - log 4
     5 seconds after call - log 5
-
+ 
   However, because each call to console.log occurs after the loop has finished, the value of i has changed before the console.log executes.
   We'll need to use a closure to preserve a reference to i at the time of execution.
   
@@ -207,7 +214,7 @@ function secretNumber() {
 */
 
 function timeOutCounter() {
-  for (var i = 0; i <= 5; i++) {
+  for (let i = 0; i <= 5; i++) {
     setTimeout(function () {
       console.log(i);
     }, i * 1000);
